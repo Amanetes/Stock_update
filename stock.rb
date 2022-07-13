@@ -2,14 +2,17 @@ MAX_CAPACITY_PER_ITEM = 30 # Максимальное количество то�
 
 store = []
 
-STDIN.read.split("\n").each do |a|
-  if a == 'end'
-    a.rstrip!
-    break
-  end
-  store << a
-end
+$/ = "end" 
+user_input = STDIN.gets.chomp
+store = user_input.split("\n")
 
+# STDIN.read.split("\n").each do |a|
+#   if a == 'end'
+#     a.rstrip!
+#     break
+#   end
+#   store << a
+# end
 # Finish user input with CTRL + D
 
 idx = store.index('stock_update')
@@ -34,12 +37,12 @@ end
 updated_stock.each do |(amount, key)|
   current_hash[key] ||= 0
   current_amount = current_hash[key]
-  current_hash[key] = amount + current_amount unless current_amount == 30
+  current_hash[key] = amount + current_amount unless current_amount == MAX_CAPACITY_PER_ITEM
 end
 
 result = current_hash.to_a.map(&:reverse).each do |el|
   amount, name = el
-  if amount == 30
+  if amount == MAX_CAPACITY_PER_ITEM
     el << 'full'
   end
 end

@@ -1,6 +1,6 @@
 MAX_CAPACITY_PER_ITEM = 30 # Максимальное количество товаров на складе
 
-store = []
+# store = []
 
 $/ = "end" 
 user_input = STDIN.gets.chomp
